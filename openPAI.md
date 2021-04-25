@@ -22,7 +22,7 @@
 
 - openAI平台账号：(密)：向管理员申请账号
 - nfs存储服务器：10.130.2.163:8022( 192.168.1.8 zerotier：192.168.111.233)  用户名`ouc`  密码`123`
-- 镜像仓库cvlab.qdxnzn.com：账号`admin` 密码`Harbor12345`。push密码也是`Harbor12345`
+- 镜像仓库cvlab.qdxnzn.com（zerotier 192.168.111.168）：账号`admin` 密码`Harbor12345`。push密码也是`Harbor12345`
   - `sudo docker login --username=admin  cvlab.qdxnzn.com`   输入`Harbor12345`
 - 集群(非管理员勿登录)：用户名`ouc`  密码`123`
   - 192.168.1.200 - 206。其中200为master n0，其余为n1-n6
