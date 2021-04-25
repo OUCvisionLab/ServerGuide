@@ -21,7 +21,7 @@
 ### 0 账号信息：
 
 - openAI平台账号：(密)：向管理员申请账号
-- nfs存储服务器：222.195.151.85:8011( 192.168.1.4)  用户名`ouc`  密码`123`
+- nfs存储服务器：10.130.2.163:8022( 192.168.1.8 zerotier：192.168.111.233)  用户名`ouc`  密码`123`
 - 镜像仓库cvlab.qdxnzn.com：账号`admin` 密码`Harbor12345`。push密码也是`Harbor12345`
   - `sudo docker login --username=admin  cvlab.qdxnzn.com`   输入`Harbor12345`
 - 集群(非管理员勿登录)：用户名`ouc`  密码`123`
@@ -29,7 +29,7 @@
 
 ### 1 登录集群平台
 
-浏览器输入：222.195.151.231 ，输入账号密码。账号密码分为管理员账户和普通账户。
+浏览器输入：10.130.2.163:8080(zerotier：192.168.111.158) ，输入账号密码。账号密码分为管理员账户和普通账户。
 
 - 管理员账户用于注册普通账户和查看集群运行情况。
 - 普通账户用于添加训练任务(保证外来人员无集群账号)
@@ -73,7 +73,7 @@ mkdir /data/姓名全字母
 
 ### 3 docker的拉取与提交
 
-在任务提交网页http://222.195.151.231/submit.html 的最下面有一个`Docker images`选项，
+在任务提交网页的最下面有一个`Docker images`选项，
 
 - 可以选择下拉列表的选项（未都测试过），
 - 也可以选择`Custom`自定义按钮来上传镜像。填写的格式是docker的格式
@@ -126,7 +126,7 @@ apt install -y nfs-common
 apt update # 更新源
 
 # 挂载 #(把存储服务器/data 挂载到 docker容器/mnt)
-mount -o nolock -t nfs 192.168.1.4:/data/姓名  /mnt
+mount -o nolock -t nfs 192.168.1.8:/data/姓名  /mnt
 ##挂载完后你的文件传到了/mnt里，
 ##比如原来文件地址：/data/hanfeng/test.sh，现在地址为：/mnt/test.sh。
 ##注意没有了姓名
@@ -138,7 +138,7 @@ cd /mnt
 # 如 pip install tensorflow-gpu=1.12
 
 # 除挂载外，可以用scp命令传另外一些文件到镜像里
-# 文件服务器外网ip端口：222.195.151.85:8011
+# 文件服务器外网ip端口：10.130.2.163:8022
 
 # 执行训练任务 # 尽量使用绝对路径，注意是没有你姓名那层目录的
 python /mnt/test.py
@@ -155,7 +155,7 @@ echo "task start..."
 apt update
 echo "task end..."
 
-mount -t nfs -o rw,nolock 192.168.1.4:/data/models /mnt
+mount -t nfs -o rw,nolock 192.168.1.8:/data/models /mnt
 ```
 
 测试环境2
@@ -165,7 +165,7 @@ echo "task start..."
 apt update
 apt install -y nfs-common
 echo "task 1..."
-mount -o nolock -t nfs 192.168.1.4:/data/models /mnt
+mount -o nolock -t nfs 192.168.1.8:/data/models /mnt
 echo "task 2..."
 python /mnt/research/slim/download_and_convert_data.py --dataset_name=cifar10 --dataset_dir=/tmp/data
 echo "task 3..."
@@ -183,7 +183,7 @@ python /mnt/research/slim/train_image_classifier.py --dataset_name=cifar10 --dat
 
 ### 5 提交任务
 
-网页：222.195.151.231
+网页：10.130.2.163:8080
 
 在command里写上面小节4里编写好的训练命令
 
