@@ -35,6 +35,7 @@
 | 222.195.151.66  | 9019/9119       | RAM:32G, CPU:3.5GHz*8, GPU:1080Ti 11G *2       | ouc-19    | b301     | ZTG,YZM        |
 | 222.195.151.170 | 9055/9155       | RAM:64G, CPU:3.5GHz*2, GPU:TITAN RTX 24G*2     | xx        | XXX      | GYH,LYQ,LN,WHT |
 | 222.195.151.85  | 9014/9114       | RAM:32G，CPU:2.5GHz*24, GPU:2080Ti  *2         | ouc       | 123      |                |
+
 注：
 
 - 请注意区别端口是90XX还是91XX，一个是远程桌面，一个是ssh。我们组90XX是桌面，别的组有的90XX是ssh
